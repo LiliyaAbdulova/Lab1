@@ -24,15 +24,15 @@ void selection(int *a,int size)
 }
 int main()
 {
-   // clock_t time;
-    //time = clock();
+   clock_t time;
+    time = clock();
     int i,size=10000;
     int a[size];
 for(i=0;i<size;i++){
     a[i]=1+rand()%9000;
 }
 selection(a,size);
-//time = clock() - time;
-//printf("second%f", (double)time/CLOCKS_PER_SEC);
+time = clock() - time;
+printf("second%f", (double)time/CLOCKS_PER_SEC);
 system("pause");
 }
