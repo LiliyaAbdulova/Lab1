@@ -4,6 +4,25 @@
 #include <time.h>
 
 using namespace std;
+void line(int *a,int n){
+    int min,mesto,k,i;
+    for(int i=1;i<=n;i++)
+       {
+               min=a[i];
+               for(int j=i+1;j<=n;j++)
+               {
+                       if (min>a[j])
+                       {
+                                    min=a[j];
+                                    mesto=j;
+                       }
+               }
+               k=a[i];
+               a[i]=min;
+               a[mesto]=k;
+       }
+    for(i=0;i<n-1;i++)cout<<"*"<<a[i]<<endl;
+}
 void selection(int *a,int size)
 {
    int i,j,mx,nmx;
@@ -20,7 +39,7 @@ void selection(int *a,int size)
    a[nmx]=a[i];
            a[i]=mx;
 }
-   for(i=0;i<size-1;i++)cout<<a[i]<<endl;
+   for(i=0;i<size-1;i++)cout<<"#"<<a[i]<<endl;
 }
 
 void radix(int *ar, int *br, int *cr, int sizeC, int sizeAB)
@@ -49,11 +68,18 @@ int main()
     int b[size];
     int c[size];
 for(i=0;i<size;i++){
-    a[i]=1+rand()%9000;
+    a[i]=1+rand()%10000;
 }
-radix(a,b,c,size,size);
+for(i=0;i<size;i++){
+    b[i]=1+rand()%10000;
+}
+//radix(a,b,c,size,size);
 selection(a,size);
+
 time = clock() - time;
+cout<<endl<<"Time=";
 printf("second%f", (double)time/CLOCKS_PER_SEC);
+cout<<endl;
+//line(b,size);
 system("pause");
 }
